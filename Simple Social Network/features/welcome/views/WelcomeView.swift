@@ -8,10 +8,12 @@
 
 import SwiftUI
 
-struct WelcomeScreen: View {
+struct WelcomeView: View {
     
     @State var email: String = ""
     @State var password: String = ""
+    
+    var viewModel = WelcomViewModel()
             
     var body: some View {
         
@@ -130,6 +132,6 @@ struct WelcomeScreen: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        WelcomeScreen().environment(\.locale, .init(identifier: "en"))//pt-BR
+        WelcomeView().environment(\.locale, .init(identifier: "en"))//pt-BR
     }
 }
