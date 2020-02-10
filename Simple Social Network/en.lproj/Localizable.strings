@@ -1,0 +1,15 @@
+/* 
+  AppStrings.strings
+  Simple Social Network
+
+  Created by Adriano Song on 07/02/20.
+  Copyright © 2020 Adriano Song. All rights reserved.
+*/
+
+    
+"welcome.screen.title" = "Simple Social Network";
+"welcome.screen.sign_in_button_title" = "Get to App";
+"welcome.screen.email_placeholder" = "User e-mail";
+"welcome.screen.user_password" = "Password";
+"welcome.screen.create_account" = "Create account";
+"welcome.screen.need_help" = "Need help?";
