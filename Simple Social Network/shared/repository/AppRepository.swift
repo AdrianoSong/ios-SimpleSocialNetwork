@@ -7,37 +7,16 @@
 //
 
 import Foundation
-import Request
-
-enum ApiPaths: String {
-    case getToken = "/getToken"
-    case getPosts = "/posts"
-    case post = "/post"
-    case user = "/user"
-}
+import RxSwift
 
 protocol AppRepository {
     
+    func getToken() -> Observable<Token>
 }
 
 extension AppRepository {
     
-    func getToken() {
-        guard let baseURL = Bundle.main.object(forInfoDictionaryKey: "baseUrl") as? String else {
-            return
-        }
-        
-        let getTokenURLString = baseURL + ApiPaths.getToken.rawValue
-        
-        Request {
-            Url(getTokenURLString)
-            Method(.get)
-            Header.ContentType(.json)
-        }.onData({ data in
-            let token = try? JSONDecoder().decode(Token.self, from: data)
-            print("get token success \(token?.csrf)")
-        }).onError({ error in
-            print("get token failure \(error)")
-        }).call()
+    func getToken() -> Observable<Token> {
+        return BaseApi.request(urlConvertile: ApiRouter.getToken)
     }
 }

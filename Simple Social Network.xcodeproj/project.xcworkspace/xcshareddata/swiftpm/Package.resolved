@@ -2,12 +2,21 @@
   "object": {
     "pins": [
       {
-        "package": "Request",
-        "repositoryURL": "https://github.com/carson-katri/swift-request",
+        "package": "Alamofire",
+        "repositoryURL": "https://github.com/Alamofire/Alamofire",
         "state": {
           "branch": null,
-          "revision": "79a11514ad07004cd6359ef616b31f71c013bbc6",
-          "version": "1.2.1"
+          "revision": "747c8db8d57b68d5e35275f10c92d55f982adbd4",
+          "version": "4.9.1"
+        }
+      },
+      {
+        "package": "RxSwift",
+        "repositoryURL": "https://github.com/ReactiveX/RxSwift.git",
+        "state": {
+          "branch": null,
+          "revision": "b3e888b4972d9bc76495dd74d30a8c7fad4b9395",
+          "version": "5.0.1"
         }
       }
     ]

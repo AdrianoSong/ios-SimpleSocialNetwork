@@ -7,13 +7,20 @@
 //
 
 import Foundation
+import RxSwift
 
 class WelcomViewModel {
     
-    let repository = WelcomeRepository()
+    let bag: DisposeBag
+    let repository: WelcomeRepository
     
     init() {
-        //TODO: remove here after testing
-        repository.getToken()
+        bag = DisposeBag()
+        repository = WelcomeRepository()
+    }
+    
+    func performLogin(email: String, password: String) -> Observable<UserElement> {
+        
+        return repository.getUser(email: email, password: password)
     }
 }

@@ -104,7 +104,14 @@ struct WelcomeView: View {
         return HStack {
             LoginButton(
                 title: Text("welcome.screen.sign_in_button_title"), action: {
-                    print("email \(self.email) - password \(self.password)")
+                    
+                    self.viewModel
+                        .performLogin(email: self.email, password: self.password)
+                        .subscribe(onNext: { user in
+                        print("success login!: \(user)")
+                        }, onError: { error in
+                            print("error to fecth user: \(error)")
+                        }).disposed(by: self.viewModel.bag)
             })
         }.padding(.top, 30)
     }

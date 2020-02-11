@@ -7,9 +7,11 @@
 //
 
 import Foundation
+import RxSwift
 
 class WelcomeRepository: AppRepository {
     
-    
-    
+    func getUser(email: String, password: String) -> Observable<UserElement> {
+        return BaseApi.request(urlConvertile: ApiRouter.getUser(email: email, password: password))
+    }
 }
