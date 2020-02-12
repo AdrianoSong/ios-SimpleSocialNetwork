@@ -11,6 +11,10 @@ import Alamofire
 
 enum AlamoError: Error  {
     case invalidURL
+    case badRequest (description: String)
+    case notFound
+    case forbidden
+    case unknown
 }
 
 enum ApiRouter: URLRequestConvertible {
@@ -48,7 +52,7 @@ enum ApiRouter: URLRequestConvertible {
             return "/getToken"
             
         case .getUser:
-            return "/getUser"
+            return "/user"
         }
     }
 

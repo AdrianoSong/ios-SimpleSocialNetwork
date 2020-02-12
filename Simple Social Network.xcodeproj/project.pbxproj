@@ -24,6 +24,8 @@
 		295E32B023F325290095F210 /* BaseApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295E32AF23F325290095F210 /* BaseApi.swift */; };
 		295E32B223F325740095F210 /* ApiRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295E32B123F325740095F210 /* ApiRouter.swift */; };
 		295E32B723F330C70095F210 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295E32B623F330C70095F210 /* App.swift */; };
+		29BF9B0D23F4461800527DD5 /* CreateAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BF9B0C23F4461800527DD5 /* CreateAccountView.swift */; };
+		29BF9B1323F480B500527DD5 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BF9B1223F480B500527DD5 /* HomeView.swift */; };
 		29D77BF623F1C53600B9B06F /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D77BF523F1C53600B9B06F /* LoginButton.swift */; };
 		29D77BF823F1C56C00B9B06F /* CustomPasswordField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D77BF723F1C56C00B9B06F /* CustomPasswordField.swift */; };
 		29D77BFA23F1C59500B9B06F /* CustomEmailField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D77BF923F1C59500B9B06F /* CustomEmailField.swift */; };
@@ -49,6 +51,8 @@
 		295E32AF23F325290095F210 /* BaseApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseApi.swift; sourceTree = "<group>"; };
 		295E32B123F325740095F210 /* ApiRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRouter.swift; sourceTree = "<group>"; };
 		295E32B623F330C70095F210 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		29BF9B0C23F4461800527DD5 /* CreateAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountView.swift; sourceTree = "<group>"; };
+		29BF9B1223F480B500527DD5 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		29D77BF523F1C53600B9B06F /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
 		29D77BF723F1C56C00B9B06F /* CustomPasswordField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPasswordField.swift; sourceTree = "<group>"; };
 		29D77BF923F1C59500B9B06F /* CustomEmailField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomEmailField.swift; sourceTree = "<group>"; };
@@ -155,6 +159,38 @@
 			path = singleton;
 			sourceTree = "<group>";
 		};
+		29BF9B0E23F4807200527DD5 /* home */ = {
+			isa = PBXGroup;
+			children = (
+				29BF9B0F23F4808D00527DD5 /* repository */,
+				29BF9B1023F4809500527DD5 /* viewmodel */,
+				29BF9B1123F4809E00527DD5 /* views */,
+			);
+			path = home;
+			sourceTree = "<group>";
+		};
+		29BF9B0F23F4808D00527DD5 /* repository */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = repository;
+			sourceTree = "<group>";
+		};
+		29BF9B1023F4809500527DD5 /* viewmodel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = viewmodel;
+			sourceTree = "<group>";
+		};
+		29BF9B1123F4809E00527DD5 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				29BF9B1223F480B500527DD5 /* HomeView.swift */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
 		29D77BF423F1C50F00B9B06F /* views */ = {
 			isa = PBXGroup;
 			children = (
@@ -176,6 +212,7 @@
 		29E0874F23F1DB32005936F6 /* features */ = {
 			isa = PBXGroup;
 			children = (
+				29BF9B0E23F4807200527DD5 /* home */,
 				29E0875023F1DB3A005936F6 /* welcome */,
 			);
 			path = features;
@@ -195,6 +232,7 @@
 			isa = PBXGroup;
 			children = (
 				2920A7AB23ED9D81005E74D8 /* WelcomeView.swift */,
+				29BF9B0C23F4461800527DD5 /* CreateAccountView.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -306,9 +344,11 @@
 				295E32B023F325290095F210 /* BaseApi.swift in Sources */,
 				2920A7BB23EDA0E0005E74D8 /* WelcomeView.swift in Sources */,
 				295E32B223F325740095F210 /* ApiRouter.swift in Sources */,
+				29BF9B0D23F4461800527DD5 /* CreateAccountView.swift in Sources */,
 				2920A7A823ED9D81005E74D8 /* AppDelegate.swift in Sources */,
 				2920A7AA23ED9D81005E74D8 /* SceneDelegate.swift in Sources */,
 				2956CD6A23F1EFC2009DA6DE /* AppRepository.swift in Sources */,
+				29BF9B1323F480B500527DD5 /* HomeView.swift in Sources */,
 				2956CD6423F1DDDF009DA6DE /* WelcomeRepository.swift in Sources */,
 				293C684F23EDDA9C005CE93D /* Color+Extension.swift in Sources */,
 			);
@@ -472,7 +512,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.br.adriano.song.Simple-Social-Network";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -492,7 +532,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.br.adriano.song.Simple-Social-Network";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

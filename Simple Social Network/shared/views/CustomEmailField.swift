@@ -26,6 +26,7 @@ struct CustomEmailField: View {
                 onCommit: commit)
             .foregroundColor(.white)
             .keyboardType(.emailAddress)
+            .autocapitalization(.none)
         }
     }
 }

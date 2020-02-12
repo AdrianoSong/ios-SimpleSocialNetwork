@@ -13,3 +13,5 @@
 "welcome.screen.user_password" = "Password";
 "welcome.screen.create_account" = "Create account";
 "welcome.screen.need_help" = "Need help?";
+"welcome.screen.contat_song" = "Please contact Song for help 😎";
+"welcome.screen.okey_button_title" = "Okey!";

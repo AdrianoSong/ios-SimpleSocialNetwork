@@ -10,49 +10,64 @@ import SwiftUI
 
 struct WelcomeView: View {
     
-    @State var email: String = ""
-    @State var password: String = ""
+    @State fileprivate var email: String = ""
+    @State fileprivate var password: String = ""
+    
+    @State fileprivate var isShowingCreateAccountView = false
+    @State fileprivate var isShowingAlert = false
+    @State fileprivate var isPushToHomeView = false
     
     var viewModel = WelcomViewModel()
             
     var body: some View {
-        
-        ZStack {
-            LinearGradient(
-                gradient: Gradient(colors: [.babyBlue, .blueSky]),
-                startPoint: .top,
-                endPoint: .bottom)
-            .edgesIgnoringSafeArea(.all)
-        
-            VStack(alignment: .leading, content: {
-                HStack {
-                    Spacer()
-                }
-                
-                Spacer()
-                
-                ScreenTitle()
-                
-                Spacer()
-                
-                emailInput()
-                
-                passwordInput()
-                
-                loginButon()
-                
-                HStack {
-                    
-                    createNewAccountButton()
+        NavigationView {
+            ZStack {
+                LinearGradient(
+                    gradient: Gradient(colors: [.babyBlue, .blueSky]),
+                    startPoint: .top,
+                    endPoint: .bottom)
+                .edgesIgnoringSafeArea(.all)
+            
+                VStack(alignment: .leading, content: {
+                    //fill all screen width
+                    HStack {
+                        Spacer()
+                    }
                     
                     Spacer()
                     
-                    needHelpButton()
+                    ScreenTitle()
                     
-                }.padding(.all, 16)
-                
-                Spacer()
-            })
+                    Spacer()
+                    
+                    emailInput()
+                    
+                    passwordInput()
+                    
+                    NavigationLink(destination: HomeView(), isActive: $isPushToHomeView, label: {
+                        loginButon()
+                    })
+                    
+                    HStack {
+                        createNewAccountButton().sheet(isPresented: $isShowingCreateAccountView) {
+                            CreateAccountView()
+                        }
+                        
+                        Spacer()
+                        
+                        needHelpButton().alert(isPresented: $isShowingAlert, content: {
+                            Alert(title: Text("welcome.screen.need_help"),
+                                  message: Text("welcome.screen.contat_song"),
+                                  dismissButton: .default(Text("welcome.screen.okey_button_title")
+                                )
+                            )
+                        })
+                        
+                    }.padding(.all, 16)
+                    
+                    Spacer()
+                })
+            }
         }
     }
     
@@ -108,7 +123,8 @@ struct WelcomeView: View {
                     self.viewModel
                         .performLogin(email: self.email, password: self.password)
                         .subscribe(onNext: { user in
-                        print("success login!: \(user)")
+                            self.isPushToHomeView.toggle()
+                            print("success login!: \(user)")
                         }, onError: { error in
                             print("error to fecth user: \(error)")
                         }).disposed(by: self.viewModel.bag)
@@ -118,7 +134,8 @@ struct WelcomeView: View {
     
     fileprivate func createNewAccountButton() -> Button<HStack<Text>> {
         return Button(action: {
-            print("create new accont")
+            self.isShowingCreateAccountView.toggle()
+            
         }) {
             HStack {
                 Text("welcome.screen.create_account").foregroundColor(.white)
@@ -128,7 +145,7 @@ struct WelcomeView: View {
     
     fileprivate func needHelpButton() -> Button<HStack<Text>> {
         return Button(action: {
-            print("need help?")
+            self.isShowingAlert.toggle()
         }) {
             HStack {
                 Text("welcome.screen.need_help").foregroundColor(.white)
