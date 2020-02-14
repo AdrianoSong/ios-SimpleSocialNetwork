@@ -17,8 +17,8 @@ struct WelcomeView: View {
     @State fileprivate var isShowingAlert = false
     @State fileprivate var isPushToHomeView = false
     
-    var viewModel = WelcomViewModel()
-            
+    fileprivate let viewModel = WelcomViewModel()
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -36,7 +36,7 @@ struct WelcomeView: View {
                     
                     Spacer()
                     
-                    ScreenTitle()
+                    screenTitle()
                     
                     Spacer()
                     
@@ -48,22 +48,9 @@ struct WelcomeView: View {
                         loginButon()
                     })
                     
-                    HStack {
-                        createNewAccountButton().sheet(isPresented: $isShowingCreateAccountView) {
-                            CreateAccountView()
-                        }
-                        
-                        Spacer()
-                        
-                        needHelpButton().alert(isPresented: $isShowingAlert, content: {
-                            Alert(title: Text("welcome.screen.need_help"),
-                                  message: Text("welcome.screen.contat_song"),
-                                  dismissButton: .default(Text("welcome.screen.okey_button_title")
-                                )
-                            )
-                        })
-                        
-                    }.padding(.all, 16)
+                    createAccountAndNeedHelpButtons()
+                    
+                    Spacer()
                     
                     Spacer()
                 })
@@ -71,7 +58,7 @@ struct WelcomeView: View {
         }
     }
     
-    fileprivate func ScreenTitle() -> some View {
+    fileprivate func screenTitle() -> some View {
         return HStack {
             Spacer()
             Text("welcome.screen.title")
@@ -82,37 +69,22 @@ struct WelcomeView: View {
     }
     
     fileprivate func emailInput() -> some View {
-        return HStack(spacing: 16) {
-            Image(systemName: "person.crop.circle")
-                .resizable()
-                .frame(width: 25, height: 25)
-                .foregroundColor(.white)
-                .padding(.leading, 25)
-            CustomEmailField(
-                placeholder: Text("welcome.screen.email_placeholder").foregroundColor(.white),
-                text: $email)
-        }
-        .frame(minWidth: 0, maxWidth: .infinity, maxHeight: 50)
-        .background(Color.blueBG)
-        .cornerRadius(40)
-        .padding(.horizontal, 16)
+        return BaseField(
+            placeholder: Text("welcome.screen.email_placeholder").foregroundColor(.white),
+            imageName: "person.crop.circle",
+            keyboardType: .emailAddress,
+            captalization: .none,
+            text: $email)
     }
     
     fileprivate func passwordInput() -> some View {
-        return HStack(spacing: 16) {
-            Image(systemName: "lock.fill")
-                .resizable()
-                .frame(width: 20, height: 25)
-                .foregroundColor(.white)
-                .padding(.leading, 30)
-            CustomPasswordField(
-                placeholder: Text("welcome.screen.user_password").foregroundColor(.white),
-                text: $password)
-        }
-        .frame(minWidth: 0, maxWidth: .infinity, maxHeight: 50)
-        .background(Color.blueBG)
-        .cornerRadius(40)
-        .padding(.horizontal, 16)
+        return BaseField(
+            placeholder: Text("welcome.screen.user_password").foregroundColor(.white),
+            imageName: "lock.fill",
+            imageSizes: (width: 15, height: 20),
+            imageRightSpacing: 20,
+            text: $password,
+            isSecureField: true)
     }
     
     fileprivate func loginButon() -> some View {
@@ -132,25 +104,44 @@ struct WelcomeView: View {
         }.padding(.top, 30)
     }
     
+    fileprivate func createAccountAndNeedHelpButtons() -> some View {
+        return HStack {
+            createNewAccountButton().sheet(isPresented: $isShowingCreateAccountView) {
+                CreateAccountView()
+            }
+            
+            Spacer()
+            
+            needHelpButton().alert(isPresented: $isShowingAlert, content: {
+                Alert(title: Text("welcome.screen.need_help"),
+                      message: Text("welcome.screen.contat_song"),
+                      dismissButton: .default(Text("welcome.screen.okey_button_title")
+                    )
+                )
+            })
+            
+        }.padding(.all, 16)
+    }
+    
     fileprivate func createNewAccountButton() -> Button<HStack<Text>> {
         return Button(action: {
             self.isShowingCreateAccountView.toggle()
             
-        }) {
+        }, label: {
             HStack {
                 Text("welcome.screen.create_account").foregroundColor(.white)
             }
-        }
+        })
     }
     
     fileprivate func needHelpButton() -> Button<HStack<Text>> {
         return Button(action: {
             self.isShowingAlert.toggle()
-        }) {
+        }, label: {
             HStack {
                 Text("welcome.screen.need_help").foregroundColor(.white)
             }
-        }
+        })
     }
 }
 

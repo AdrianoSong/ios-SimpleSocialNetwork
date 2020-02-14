@@ -9,19 +9,12 @@
 import Foundation
 import Alamofire
 
-enum AlamoError: Error  {
-    case invalidURL
-    case badRequest (description: String)
-    case notFound
-    case forbidden
-    case unknown
-}
-
 enum ApiRouter: URLRequestConvertible {
     
     // MARK: - Endpoints
     case getToken
     case getUser (email: String, password: String)
+    case createUser (name: String, email: String, password: String)
     
     // MARK: - Parameters
     //This is the queries part, it's optional because an endpoint can be without parameters
@@ -32,6 +25,10 @@ enum ApiRouter: URLRequestConvertible {
             
         case .getUser(let email, let password):
             return ["email": email, "password": password]
+            
+        case .createUser(let name, let email, let password):
+            return ["name": name, "email": email, "password": password]
+            
         }
     }
     
@@ -43,6 +40,8 @@ enum ApiRouter: URLRequestConvertible {
             return .get
         case .getUser:
             return .post
+        case .createUser:
+            return .post
         }
     }
     
@@ -53,13 +52,17 @@ enum ApiRouter: URLRequestConvertible {
             
         case .getUser:
             return "/user"
+            
+        case .createUser:
+            return "/createUser"
         }
     }
 
     func asURLRequest() throws -> URLRequest {
         
-        guard let baseUrl = try (Bundle.main.object(forInfoDictionaryKey: "baseUrl") as? String)?.asURL() else {
-            throw AlamoError.invalidURL
+        guard let baseUrl =
+            try (Bundle.main.object(forInfoDictionaryKey: "baseUrl") as? String)?.asURL() else {
+                throw AlamoError.invalidURL
         }
         
         var urlRequest = URLRequest(url: baseUrl.appendingPathComponent(path))
@@ -78,7 +81,7 @@ enum ApiRouter: URLRequestConvertible {
     fileprivate func setRequestHeaders(_ urlRequest: inout URLRequest) {
         
         switch self {
-        case .getUser:
+        case .getUser, .createUser:
             urlRequest.setValue(ContentType.xWwwFormUrlEncoded.rawValue,
                                 forHTTPHeaderField: HttpHeaderField.contentType.rawValue)
             urlRequest.setValue(App.shared.token?.csrf ?? "",

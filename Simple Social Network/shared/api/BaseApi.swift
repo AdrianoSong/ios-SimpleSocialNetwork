@@ -10,6 +10,14 @@ import Foundation
 import Alamofire
 import RxSwift
 
+enum AlamoError: Error {
+    case invalidURL
+    case badRequest (description: String)
+    case notFound
+    case forbidden
+    case unknown
+}
+
 //The header fields
 enum HttpHeaderField: String {
     case authentication = "Authorization"
@@ -18,7 +26,6 @@ enum HttpHeaderField: String {
     case acceptEncoding = "Accept-Encoding"
     case csrfTokem = "X-CSRF-Token"
 }
-   
 
 //The content type (JSON)
 enum ContentType: String {

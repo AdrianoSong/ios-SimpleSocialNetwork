@@ -17,11 +17,11 @@ struct LoginButton: View {
     var body: some View {
         Button(action: {
             self.action?()
-        }) {
+        }, label: {
             HStack {
                 title.foregroundColor(.blueSky)
             }.frame(minWidth: 0, maxWidth: .infinity, maxHeight: 50)
-            }
+        })
         .background(Color.white)
         .cornerRadius(40)
         .padding(.horizontal, 16)

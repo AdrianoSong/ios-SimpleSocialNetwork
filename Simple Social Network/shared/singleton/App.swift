@@ -7,9 +7,9 @@
 //
 
 import Foundation
-import RxSwift
+import RxSwift  
 
-class App : AppRepository {
+class App: AppRepository {
     
     static let shared = App()
     

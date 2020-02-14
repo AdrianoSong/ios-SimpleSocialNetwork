@@ -20,7 +20,7 @@ struct HomeView: View {
             
             .edgesIgnoringSafeArea(.all)
             
-            VStack  {
+            VStack {
                 Text("Welcome home")
             }
         }

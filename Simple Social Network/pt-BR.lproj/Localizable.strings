@@ -15,3 +15,14 @@
 "welcome.screen.need_help" = "Precisa de ajuda?";
 "welcome.screen.contat_song" = "Para mais ajudas contate o Song 😎";
 "welcome.screen.okey_button_title" = "Okey!";
+
+"create.account.screen.title" = "Registrar";
+"create.account.screen.name_placeholder" = "Nome";
+"create.account.screen.confirm_password" = "Confirmar senha";
+"create.account.screen.terms_part_1" = "Criando conta, você está automanticamente aceitando todos os ";
+"create.account.screen.terms_and_conditions" = "Termos & Condições";
+"create.account.screen.terms_part_2" = " relacionadas ao App";
+"create.account.screen.log_in_app" = "Fazer login";
+"create.account.screen.terms_title" = "Termos? 🙄";
+"create.account.screen.terms_description" = "Os nossos termos são: não temos termos. 😎";
+"create.account.screen.terms_ok" = "Okey, tchau!";

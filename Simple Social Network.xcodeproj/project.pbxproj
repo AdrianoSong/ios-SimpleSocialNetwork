@@ -26,10 +26,12 @@
 		295E32B723F330C70095F210 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295E32B623F330C70095F210 /* App.swift */; };
 		29BF9B0D23F4461800527DD5 /* CreateAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BF9B0C23F4461800527DD5 /* CreateAccountView.swift */; };
 		29BF9B1323F480B500527DD5 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BF9B1223F480B500527DD5 /* HomeView.swift */; };
+		29BF9B1623F5BC2500527DD5 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 29BF9B1523F5BC2500527DD5 /* .swiftlint.yml */; };
+		29BF9B1823F5CE1D00527DD5 /* BaseField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BF9B1723F5CE1D00527DD5 /* BaseField.swift */; };
 		29D77BF623F1C53600B9B06F /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D77BF523F1C53600B9B06F /* LoginButton.swift */; };
-		29D77BF823F1C56C00B9B06F /* CustomPasswordField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D77BF723F1C56C00B9B06F /* CustomPasswordField.swift */; };
-		29D77BFA23F1C59500B9B06F /* CustomEmailField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D77BF923F1C59500B9B06F /* CustomEmailField.swift */; };
 		29E0875523F1DC32005936F6 /* WelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E0875423F1DC32005936F6 /* WelcomeViewModel.swift */; };
+		29F7409E23F7301300DD52E1 /* CreateAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F7409D23F7301300DD52E1 /* CreateAccountViewModel.swift */; };
+		29F740A023F7305000DD52E1 /* CreateAccountRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F7409F23F7305000DD52E1 /* CreateAccountRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,10 +55,12 @@
 		295E32B623F330C70095F210 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		29BF9B0C23F4461800527DD5 /* CreateAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountView.swift; sourceTree = "<group>"; };
 		29BF9B1223F480B500527DD5 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		29BF9B1523F5BC2500527DD5 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		29BF9B1723F5CE1D00527DD5 /* BaseField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseField.swift; sourceTree = "<group>"; };
 		29D77BF523F1C53600B9B06F /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
-		29D77BF723F1C56C00B9B06F /* CustomPasswordField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPasswordField.swift; sourceTree = "<group>"; };
-		29D77BF923F1C59500B9B06F /* CustomEmailField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomEmailField.swift; sourceTree = "<group>"; };
 		29E0875423F1DC32005936F6 /* WelcomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewModel.swift; sourceTree = "<group>"; };
+		29F7409D23F7301300DD52E1 /* CreateAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewModel.swift; sourceTree = "<group>"; };
+		29F7409F23F7305000DD52E1 /* CreateAccountRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +80,7 @@
 		2920A79B23ED9D81005E74D8 = {
 			isa = PBXGroup;
 			children = (
+				29BF9B1523F5BC2500527DD5 /* .swiftlint.yml */,
 				2920A7A623ED9D81005E74D8 /* Simple Social Network */,
 				2920A7A523ED9D81005E74D8 /* Products */,
 			);
@@ -195,8 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				29D77BF523F1C53600B9B06F /* LoginButton.swift */,
-				29D77BF723F1C56C00B9B06F /* CustomPasswordField.swift */,
-				29D77BF923F1C59500B9B06F /* CustomEmailField.swift */,
+				29BF9B1723F5CE1D00527DD5 /* BaseField.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -241,6 +245,7 @@
 			isa = PBXGroup;
 			children = (
 				29E0875423F1DC32005936F6 /* WelcomeViewModel.swift */,
+				29F7409D23F7301300DD52E1 /* CreateAccountViewModel.swift */,
 			);
 			path = viewmodel;
 			sourceTree = "<group>";
@@ -249,6 +254,7 @@
 			isa = PBXGroup;
 			children = (
 				2956CD6323F1DDDF009DA6DE /* WelcomeRepository.swift */,
+				29F7409F23F7305000DD52E1 /* CreateAccountRepository.swift */,
 			);
 			path = repository;
 			sourceTree = "<group>";
@@ -263,6 +269,7 @@
 				2920A7A023ED9D81005E74D8 /* Sources */,
 				2920A7A123ED9D81005E74D8 /* Frameworks */,
 				2920A7A223ED9D81005E74D8 /* Resources */,
+				29BF9B1423F5BAE900527DD5 /* Run Script (Swiftlint) */,
 			);
 			buildRules = (
 			);
@@ -321,6 +328,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29BF9B1623F5BC2500527DD5 /* .swiftlint.yml in Resources */,
 				2920A7B423ED9D83005E74D8 /* LaunchScreen.storyboard in Resources */,
 				2920A7C123EDA64C005E74D8 /* Localizable.strings in Resources */,
 				2920A7B123ED9D83005E74D8 /* Preview Assets.xcassets in Resources */,
@@ -330,17 +338,38 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		29BF9B1423F5BAE900527DD5 /* Run Script (Swiftlint) */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script (Swiftlint)";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		2920A7A023ED9D81005E74D8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				29D77BF823F1C56C00B9B06F /* CustomPasswordField.swift in Sources */,
 				29E0875523F1DC32005936F6 /* WelcomeViewModel.swift in Sources */,
-				29D77BFA23F1C59500B9B06F /* CustomEmailField.swift in Sources */,
 				2956CD6723F1EF4C009DA6DE /* AppModel.swift in Sources */,
 				29D77BF623F1C53600B9B06F /* LoginButton.swift in Sources */,
 				295E32B723F330C70095F210 /* App.swift in Sources */,
+				29F7409E23F7301300DD52E1 /* CreateAccountViewModel.swift in Sources */,
+				29BF9B1823F5CE1D00527DD5 /* BaseField.swift in Sources */,
 				295E32B023F325290095F210 /* BaseApi.swift in Sources */,
 				2920A7BB23EDA0E0005E74D8 /* WelcomeView.swift in Sources */,
 				295E32B223F325740095F210 /* ApiRouter.swift in Sources */,
@@ -349,6 +378,7 @@
 				2920A7AA23ED9D81005E74D8 /* SceneDelegate.swift in Sources */,
 				2956CD6A23F1EFC2009DA6DE /* AppRepository.swift in Sources */,
 				29BF9B1323F480B500527DD5 /* HomeView.swift in Sources */,
+				29F740A023F7305000DD52E1 /* CreateAccountRepository.swift in Sources */,
 				2956CD6423F1DDDF009DA6DE /* WelcomeRepository.swift in Sources */,
 				293C684F23EDDA9C005CE93D /* Color+Extension.swift in Sources */,
 			);
