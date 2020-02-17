@@ -14,6 +14,13 @@
 		2920A7B423ED9D83005E74D8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2920A7B223ED9D83005E74D8 /* LaunchScreen.storyboard */; };
 		2920A7BB23EDA0E0005E74D8 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2920A7AB23ED9D81005E74D8 /* WelcomeView.swift */; };
 		2920A7C123EDA64C005E74D8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2920A7C323EDA64C005E74D8 /* Localizable.strings */; };
+		293B9C7423FADCBB00654A72 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293B9C7323FADCBB00654A72 /* AppCoordinator.swift */; };
+		293B9C7723FAE43E00654A72 /* WelcomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293B9C7623FAE43E00654A72 /* WelcomeCoordinator.swift */; };
+		293B9C7923FAE67500654A72 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293B9C7823FAE67500654A72 /* Coordinator.swift */; };
+		293B9C7B23FAE68C00654A72 /* CoordinatorKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293B9C7A23FAE68C00654A72 /* CoordinatorKey.swift */; };
+		293B9C7E23FAECCD00654A72 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293B9C7D23FAECCD00654A72 /* HomeCoordinator.swift */; };
+		293B9C8023FB368000654A72 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293B9C7F23FB368000654A72 /* UIView+Extension.swift */; };
+		293B9C8223FB398F00654A72 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293B9C8123FB398F00654A72 /* LoadingView.swift */; };
 		293C684F23EDDA9C005CE93D /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293C684E23EDDA9C005CE93D /* Color+Extension.swift */; };
 		2956CD6423F1DDDF009DA6DE /* WelcomeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2956CD6323F1DDDF009DA6DE /* WelcomeRepository.swift */; };
 		2956CD6723F1EF4C009DA6DE /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2956CD6623F1EF4C009DA6DE /* AppModel.swift */; };
@@ -46,6 +53,13 @@
 		2920A7C223EDA64C005E74D8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2920A7C623EDAA0C005E74D8 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		2920A7C723EDAA0C005E74D8 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		293B9C7323FADCBB00654A72 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		293B9C7623FAE43E00654A72 /* WelcomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeCoordinator.swift; sourceTree = "<group>"; };
+		293B9C7823FAE67500654A72 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		293B9C7A23FAE68C00654A72 /* CoordinatorKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorKey.swift; sourceTree = "<group>"; };
+		293B9C7D23FAECCD00654A72 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
+		293B9C7F23FB368000654A72 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		293B9C8123FB398F00654A72 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		293C684E23EDDA9C005CE93D /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		2956CD6323F1DDDF009DA6DE /* WelcomeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeRepository.swift; sourceTree = "<group>"; };
 		2956CD6623F1EF4C009DA6DE /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
@@ -121,6 +135,7 @@
 		2920A7BE23EDA26E005E74D8 /* shared */ = {
 			isa = PBXGroup;
 			children = (
+				293B9C7223FADCA800654A72 /* coordinator */,
 				295E32B523F330B30095F210 /* singleton */,
 				295E32AE23F325190095F210 /* api */,
 				2956CD6823F1EFB1009DA6DE /* repository */,
@@ -129,6 +144,32 @@
 				29D77BF423F1C50F00B9B06F /* views */,
 			);
 			path = shared;
+			sourceTree = "<group>";
+		};
+		293B9C7223FADCA800654A72 /* coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				293B9C7323FADCBB00654A72 /* AppCoordinator.swift */,
+				293B9C7823FAE67500654A72 /* Coordinator.swift */,
+				293B9C7A23FAE68C00654A72 /* CoordinatorKey.swift */,
+			);
+			path = coordinator;
+			sourceTree = "<group>";
+		};
+		293B9C7523FAE43300654A72 /* coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				293B9C7623FAE43E00654A72 /* WelcomeCoordinator.swift */,
+			);
+			path = coordinator;
+			sourceTree = "<group>";
+		};
+		293B9C7C23FAECC100654A72 /* coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				293B9C7D23FAECCD00654A72 /* HomeCoordinator.swift */,
+			);
+			path = coordinator;
 			sourceTree = "<group>";
 		};
 		2956CD6523F1EF3A009DA6DE /* model */ = {
@@ -167,6 +208,7 @@
 		29BF9B0E23F4807200527DD5 /* home */ = {
 			isa = PBXGroup;
 			children = (
+				293B9C7C23FAECC100654A72 /* coordinator */,
 				29BF9B0F23F4808D00527DD5 /* repository */,
 				29BF9B1023F4809500527DD5 /* viewmodel */,
 				29BF9B1123F4809E00527DD5 /* views */,
@@ -201,6 +243,7 @@
 			children = (
 				29D77BF523F1C53600B9B06F /* LoginButton.swift */,
 				29BF9B1723F5CE1D00527DD5 /* BaseField.swift */,
+				293B9C8123FB398F00654A72 /* LoadingView.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -209,6 +252,7 @@
 			isa = PBXGroup;
 			children = (
 				293C684E23EDDA9C005CE93D /* Color+Extension.swift */,
+				293B9C7F23FB368000654A72 /* UIView+Extension.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -225,6 +269,7 @@
 		29E0875023F1DB3A005936F6 /* welcome */ = {
 			isa = PBXGroup;
 			children = (
+				293B9C7523FAE43300654A72 /* coordinator */,
 				29E0875323F1DB6C005936F6 /* repository */,
 				29E0875223F1DB62005936F6 /* viewmodel */,
 				29E0875123F1DB4A005936F6 /* views */,
@@ -369,11 +414,16 @@
 				29D77BF623F1C53600B9B06F /* LoginButton.swift in Sources */,
 				295E32B723F330C70095F210 /* App.swift in Sources */,
 				29F7409E23F7301300DD52E1 /* CreateAccountViewModel.swift in Sources */,
+				293B9C8223FB398F00654A72 /* LoadingView.swift in Sources */,
 				29BF9B1823F5CE1D00527DD5 /* BaseField.swift in Sources */,
+				293B9C7423FADCBB00654A72 /* AppCoordinator.swift in Sources */,
 				295E32B023F325290095F210 /* BaseApi.swift in Sources */,
+				293B9C7723FAE43E00654A72 /* WelcomeCoordinator.swift in Sources */,
 				2920A7BB23EDA0E0005E74D8 /* WelcomeView.swift in Sources */,
 				295E32B223F325740095F210 /* ApiRouter.swift in Sources */,
 				29BF9B0D23F4461800527DD5 /* CreateAccountView.swift in Sources */,
+				293B9C7923FAE67500654A72 /* Coordinator.swift in Sources */,
+				293B9C8023FB368000654A72 /* UIView+Extension.swift in Sources */,
 				2920A7A823ED9D81005E74D8 /* AppDelegate.swift in Sources */,
 				2920A7AA23ED9D81005E74D8 /* SceneDelegate.swift in Sources */,
 				2956CD6A23F1EFC2009DA6DE /* AppRepository.swift in Sources */,
@@ -381,6 +431,8 @@
 				29F740A023F7305000DD52E1 /* CreateAccountRepository.swift in Sources */,
 				2956CD6423F1DDDF009DA6DE /* WelcomeRepository.swift in Sources */,
 				293C684F23EDDA9C005CE93D /* Color+Extension.swift in Sources */,
+				293B9C7B23FAE68C00654A72 /* CoordinatorKey.swift in Sources */,
+				293B9C7E23FAECCD00654A72 /* HomeCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

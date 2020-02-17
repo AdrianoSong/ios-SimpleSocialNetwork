@@ -26,3 +26,8 @@
 "create.account.screen.terms_title" = "Terms? 🙄";
 "create.account.screen.terms_description" = "The terms are: we don't have any terms 😎";
 "create.account.screen.terms_ok" = "Okey, bye!";
+"create.account.screen.error_title" = "Fail";
+"create.account.screen.error_message" = "To create new account, are you trying to create an existing user?";
+"create.account.screen.password_fail_match" = "fail to match password, please try it again";
+
+"loading.view.title" = "Loading...";

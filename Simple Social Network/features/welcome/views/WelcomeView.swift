@@ -15,9 +15,16 @@ struct WelcomeView: View {
     
     @State fileprivate var isShowingCreateAccountView = false
     @State fileprivate var isShowingAlert = false
-    @State fileprivate var isPushToHomeView = false
     
-    fileprivate let viewModel = WelcomViewModel()
+    @State fileprivate var isOnLoading = false
+    
+    fileprivate let viewModel: WelcomViewModel
+        
+    var onFinish: (() -> Void)?
+    
+    init(viewModel: WelcomViewModel) {
+        self.viewModel = viewModel
+    }
     
     var body: some View {
         NavigationView {
@@ -28,31 +35,31 @@ struct WelcomeView: View {
                     endPoint: .bottom)
                 .edgesIgnoringSafeArea(.all)
             
-                VStack(alignment: .leading, content: {
-                    //fill all screen width
-                    HStack {
+                LoadingView(isShowing: $isOnLoading, content: {
+                    VStack(alignment: .leading, content: {
+                        //fill all screen width
+                        HStack {
+                            Spacer()
+                        }
+                        
                         Spacer()
-                    }
-                    
-                    Spacer()
-                    
-                    screenTitle()
-                    
-                    Spacer()
-                    
-                    emailInput()
-                    
-                    passwordInput()
-                    
-                    NavigationLink(destination: HomeView(), isActive: $isPushToHomeView, label: {
-                        loginButon()
+                        
+                        self.screenTitle()
+                        
+                        Spacer()
+                        
+                        self.emailInput()
+                        
+                        self.passwordInput()
+                        
+                        self.loginButon()
+
+                        self.createAccountAndNeedHelpButtons()
+                        
+                        Spacer()
+                        
+                        Spacer()
                     })
-                    
-                    createAccountAndNeedHelpButtons()
-                    
-                    Spacer()
-                    
-                    Spacer()
                 })
             }
         }
@@ -92,13 +99,21 @@ struct WelcomeView: View {
             LoginButton(
                 title: Text("welcome.screen.sign_in_button_title"), action: {
                     
+                    self.isOnLoading = true
+                    
                     self.viewModel
                         .performLogin(email: self.email, password: self.password)
                         .subscribe(onNext: { user in
-                            self.isPushToHomeView.toggle()
-                            print("success login!: \(user)")
+                            
+                            self.isOnLoading = false
+                            
+                            App.shared.user = user
+                            
+                            self.onFinish?()
+
                         }, onError: { error in
                             print("error to fecth user: \(error)")
+                            self.isOnLoading = false
                         }).disposed(by: self.viewModel.bag)
             })
         }.padding(.top, 30)
@@ -147,6 +162,6 @@ struct WelcomeView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        WelcomeView().environment(\.locale, .init(identifier: "en"))//pt-BR
+        WelcomeView(viewModel: WelcomViewModel()).environment(\.locale, .init(identifier: "en"))//pt-BR
     }
 }

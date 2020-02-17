@@ -20,6 +20,9 @@ struct CreateAccountView: View {
     
     @State fileprivate var isShowingHelp = false
     @State fileprivate var isShowingTerms = false
+    @State fileprivate var isShowingErrorAlert = false
+    @State fileprivate var isFailtToMatchPassword = false
+    @State fileprivate var isOnLoading = false
     
     fileprivate let viewModel = CreateAccountViewModel()
     
@@ -31,33 +34,45 @@ struct CreateAccountView: View {
                 endPoint: .bottom)
             .edgesIgnoringSafeArea(.all)
             
-            VStack(spacing: 16, content: {
-                
-                Spacer()
-                
-                defineScreenTitle()
-                
-                defineNameField()
-                
-                defineEmailField()
-                
-                definePasswordField()
-                
-                defineConfirmPasswordField()
-                                
-                defineTermsAndConditionsText().alert(isPresented: $isShowingTerms, content: {
-                    Alert(title: Text("create.account.screen.terms_title"),
-                          message: Text("create.account.screen.terms_description"),
-                          dismissButton: .default(Text("create.account.screen.terms_ok")
+            LoadingView(isShowing: $isOnLoading, content: {
+                VStack(spacing: 16, content: {
+                    
+                    Spacer()
+                    
+                    self.defineScreenTitle()
+                    
+                    self.defineNameField()
+                    
+                    self.defineEmailField()
+                    
+                    self.definePasswordField()
+                    
+                    self.defineConfirmPasswordField()
+                                    
+                    self.defineTermsAndConditionsText().alert(isPresented: self.$isShowingTerms, content: {
+                        Alert(title: Text("create.account.screen.terms_title"),
+                              message: Text("create.account.screen.terms_description"),
+                              dismissButton: .default(Text("create.account.screen.terms_ok")
+                            )
                         )
-                    )
+                    })
+                    
+                    self.defineCreateAccountButton()
+                        .alert(isPresented: self.$isShowingErrorAlert, content: {
+                            Alert(title: Text("create.account.screen.error_title"),
+                                  message: Text("create.account.screen.error_message"),
+                                  dismissButton: .cancel())
+                        })
+                        .alert(isPresented: self.$isFailtToMatchPassword, content: {
+                            Alert(title: Text("create.account.screen.error_title"),
+                                  message: Text("create.account.screen.password_fail_match"),
+                                  dismissButton: .cancel())
+                        })
+                    
+                    self.createLoginAndNeedHelpButtons()
+                    
+                    Spacer()
                 })
-                
-                defineCreateAccountButton()
-                
-                createLoginAndNeedHelpButtons()
-                
-                Spacer()
             })
         }
     }
@@ -134,19 +149,29 @@ struct CreateAccountView: View {
             action: {
                 if self.password == self.confirmPassword {
                     
+                    self.isOnLoading = true
+                    
                     self.viewModel.performCreateUser(
                         name: self.name,
                         email: self.email,
                         password: self.password).subscribe(onNext: { user in
                             print("deu certo \(user)")
+                            
+                            self.isOnLoading = false
+                            self.presentationMode.wrappedValue.dismiss()
+                            
                         }, onError: { error in
-                            print("falhou \(error)")
+                            print("fail \(error)")
+                            
+                            self.isOnLoading = false
+                            self.isShowingErrorAlert = true
+                            
                     }).disposed(by: self.viewModel.bag)
                     
                 } else {
-                    print("fail! pass and confirm must be the same")
+                    self.isFailtToMatchPassword = true
                 }
-            })
+        })
     }
     
     fileprivate func createLoginAndNeedHelpButtons() -> some View {

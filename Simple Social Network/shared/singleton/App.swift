@@ -17,6 +17,8 @@ class App: AppRepository {
     
     var token: Token?
     
+    var user: UserElement?
+    
     fileprivate init() {
         getToken()
             .retry(3)
