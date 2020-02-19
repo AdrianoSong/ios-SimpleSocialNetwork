@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2901AD8A23FDB8B900AE080F /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2901AD8923FDB8B900AE080F /* UIColor+Extension.swift */; };
 		2920A7A823ED9D81005E74D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2920A7A723ED9D81005E74D8 /* AppDelegate.swift */; };
 		2920A7AA23ED9D81005E74D8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2920A7A923ED9D81005E74D8 /* SceneDelegate.swift */; };
 		2920A7AE23ED9D83005E74D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2920A7AD23ED9D83005E74D8 /* Assets.xcassets */; };
@@ -25,6 +26,8 @@
 		2956CD6423F1DDDF009DA6DE /* WelcomeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2956CD6323F1DDDF009DA6DE /* WelcomeRepository.swift */; };
 		2956CD6723F1EF4C009DA6DE /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2956CD6623F1EF4C009DA6DE /* AppModel.swift */; };
 		2956CD6A23F1EFC2009DA6DE /* AppRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2956CD6923F1EFC2009DA6DE /* AppRepository.swift */; };
+		2957E59423FC2A8F00369740 /* HostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2957E59323FC2A8F00369740 /* HostingController.swift */; };
+		2957E59623FC70B300369740 /* HomeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2957E59523FC70B300369740 /* HomeViewCell.swift */; };
 		295E32A823F322BA0095F210 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 295E32A723F322BA0095F210 /* RxSwift */; };
 		295E32AA23F322BA0095F210 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 295E32A923F322BA0095F210 /* RxCocoa */; };
 		295E32AD23F3240C0095F210 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 295E32AC23F3240C0095F210 /* Alamofire */; };
@@ -42,6 +45,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2901AD8923FDB8B900AE080F /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		2920A7A423ED9D81005E74D8 /* Simple Social Network.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Simple Social Network.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2920A7A723ED9D81005E74D8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2920A7A923ED9D81005E74D8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -64,6 +68,8 @@
 		2956CD6323F1DDDF009DA6DE /* WelcomeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeRepository.swift; sourceTree = "<group>"; };
 		2956CD6623F1EF4C009DA6DE /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
 		2956CD6923F1EFC2009DA6DE /* AppRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRepository.swift; sourceTree = "<group>"; };
+		2957E59323FC2A8F00369740 /* HostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostingController.swift; sourceTree = "<group>"; };
+		2957E59523FC70B300369740 /* HomeViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewCell.swift; sourceTree = "<group>"; };
 		295E32AF23F325290095F210 /* BaseApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseApi.swift; sourceTree = "<group>"; };
 		295E32B123F325740095F210 /* ApiRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRouter.swift; sourceTree = "<group>"; };
 		295E32B623F330C70095F210 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
@@ -234,6 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				29BF9B1223F480B500527DD5 /* HomeView.swift */,
+				2957E59523FC70B300369740 /* HomeViewCell.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -244,6 +251,7 @@
 				29D77BF523F1C53600B9B06F /* LoginButton.swift */,
 				29BF9B1723F5CE1D00527DD5 /* BaseField.swift */,
 				293B9C8123FB398F00654A72 /* LoadingView.swift */,
+				2957E59323FC2A8F00369740 /* HostingController.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -253,6 +261,7 @@
 			children = (
 				293C684E23EDDA9C005CE93D /* Color+Extension.swift */,
 				293B9C7F23FB368000654A72 /* UIView+Extension.swift */,
+				2901AD8923FDB8B900AE080F /* UIColor+Extension.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -424,11 +433,14 @@
 				29BF9B0D23F4461800527DD5 /* CreateAccountView.swift in Sources */,
 				293B9C7923FAE67500654A72 /* Coordinator.swift in Sources */,
 				293B9C8023FB368000654A72 /* UIView+Extension.swift in Sources */,
+				2901AD8A23FDB8B900AE080F /* UIColor+Extension.swift in Sources */,
+				2957E59423FC2A8F00369740 /* HostingController.swift in Sources */,
 				2920A7A823ED9D81005E74D8 /* AppDelegate.swift in Sources */,
 				2920A7AA23ED9D81005E74D8 /* SceneDelegate.swift in Sources */,
 				2956CD6A23F1EFC2009DA6DE /* AppRepository.swift in Sources */,
 				29BF9B1323F480B500527DD5 /* HomeView.swift in Sources */,
 				29F740A023F7305000DD52E1 /* CreateAccountRepository.swift in Sources */,
+				2957E59623FC70B300369740 /* HomeViewCell.swift in Sources */,
 				2956CD6423F1DDDF009DA6DE /* WelcomeRepository.swift in Sources */,
 				293C684F23EDDA9C005CE93D /* Color+Extension.swift in Sources */,
 				293B9C7B23FAE68C00654A72 /* CoordinatorKey.swift in Sources */,

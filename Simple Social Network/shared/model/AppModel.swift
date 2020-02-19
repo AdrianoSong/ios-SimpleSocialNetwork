@@ -17,7 +17,7 @@ struct UserElement: Codable {
     let name, email, password: String?
 }
 
-struct Post: Codable {
+struct Post: Codable, Identifiable {
     let createdAt, updatedAt: String?
     let id: Int?
     let title, body: String?

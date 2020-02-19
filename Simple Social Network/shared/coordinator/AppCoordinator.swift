@@ -43,8 +43,8 @@ class AppCoordinator: Coordinator, AppCoordinatorDelegate {
         switch coordinator {
         case .welcome:
             start(with: .home)
-        default:
-            break
+        case .home:
+            start(with: .welcome)
         }
     }
 }

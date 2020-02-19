@@ -31,3 +31,7 @@
 "create.account.screen.password_fail_match" = "falhou em digitar senha e confirmação senha. tente de novo";
 
 "loading.view.title" = "Carregando...";
+
+"home.screen.logout" = "Sair";
+"home.screen.new_post" = "Postar";
+"home.screen.title" = "Feeds";

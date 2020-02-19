@@ -12,18 +12,35 @@ import SwiftUI
 
 extension UIView {
     
+    enum FlipTransition {
+        case left
+        case right
+    }
+    
     static func windowFlipTranstion(window: UIWindow,
+                                    flipTranstion: FlipTransition = .left,
                                     viewController: UIViewController?,
                                     completion: (() -> Void)? = nil) {
         
+        let animTransition = getFlipAnimation(flipTranstion: flipTranstion)
+        
         UIView.transition(with: window,
-                          duration: 0.3,
-                          options: .transitionFlipFromLeft,
+                          duration: 0.35,
+                          options: animTransition,
                           animations: {
                             window.rootViewController = viewController
                             
         }, completion: { (_) in
             completion?()
         })
+    }
+    
+    fileprivate static func getFlipAnimation(flipTranstion: FlipTransition) -> UIView.AnimationOptions {
+        switch flipTranstion {
+        case .left:
+            return .transitionFlipFromLeft
+        default:
+            return .transitionFlipFromRight
+        }
     }
 }

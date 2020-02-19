@@ -31,3 +31,7 @@
 "create.account.screen.password_fail_match" = "fail to match password, please try it again";
 
 "loading.view.title" = "Loading...";
+
+"home.screen.logout" = "Logout";
+"home.screen.new_post" = "New post";
+"home.screen.title" = "Feeds";

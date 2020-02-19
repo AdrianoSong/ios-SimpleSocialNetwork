@@ -14,4 +14,5 @@ extension Color {
     public static let babyBlue = Color(UIColor(named: "BabyBlue") ?? .blue)
     public static let blueSky = Color(UIColor(named: "BlueSky") ?? .blue)
     public static let blueBG = Color(UIColor(named: "BlueBackground") ?? .blue)
+    public static let grayBG = Color(UIColor(named: "GrayBackground") ?? .gray)
 }

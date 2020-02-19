@@ -19,13 +19,16 @@ class HomeCoordinator: ChildCoordinator {
     
     func start(delegate: AppCoordinatorDelegate?) {
         
-        let contentView = HomeView()
-        
         guard let window = self.window else {
             return
         }
         
+        var contentView = HomeView()
+        contentView.onFinish = {
+            delegate?.finish(coordinator: .home)
+        }
+        
         UIView.windowFlipTranstion(
-            window: window, viewController: UIHostingController(rootView: contentView))
+            window: window, viewController: HomeHostingController(rootView: contentView))
     }
 }

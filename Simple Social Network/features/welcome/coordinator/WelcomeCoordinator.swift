@@ -18,11 +18,20 @@ class WelcomeCoordinator: ChildCoordinator {
     }
     
     func start(delegate: AppCoordinatorDelegate?) {
+        
+        guard let window = self.window else {
+            return
+        }
+        
         var contentView = WelcomeView(viewModel: WelcomViewModel())
         contentView.onFinish = {
             delegate?.finish(coordinator: .welcome)
         }
 
-        self.window?.rootViewController = UIHostingController(rootView: contentView)
+        UIView.windowFlipTranstion(
+            window: window,
+            flipTranstion: .right,
+            viewController: WelcomeHostingController(rootView: contentView)
+        )
     }
 }
