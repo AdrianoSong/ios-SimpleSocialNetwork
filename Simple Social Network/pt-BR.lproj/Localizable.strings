@@ -35,3 +35,4 @@
 "home.screen.logout" = "Sair";
 "home.screen.new_post" = "Postar";
 "home.screen.title" = "Feeds";
+"home.screen.empty" = "Nenhum poste, seja o primeiro!";

@@ -9,12 +9,15 @@
 import Foundation
 import Alamofire
 
+//For future: ApiRouterV2: define a protocol (Ex: ApiRouter)
+//and create specifics ApiRoutes (ex: User, Taks, Member. etc) each one needs to conform protocol 
 enum ApiRouter: URLRequestConvertible {
     
     // MARK: - Endpoints
     case getToken
     case getUser (email: String, password: String)
     case createUser (name: String, email: String, password: String)
+    case getPosts
     
     // MARK: - Parameters
     //This is the queries part, it's optional because an endpoint can be without parameters
@@ -29,6 +32,8 @@ enum ApiRouter: URLRequestConvertible {
         case .createUser(let name, let email, let password):
             return ["name": name, "email": email, "password": password]
             
+        case .getPosts:
+            return nil
         }
     }
     
@@ -42,6 +47,8 @@ enum ApiRouter: URLRequestConvertible {
             return .post
         case .createUser:
             return .post
+        case .getPosts:
+            return .get
         }
     }
     
@@ -55,6 +62,9 @@ enum ApiRouter: URLRequestConvertible {
             
         case .createUser:
             return "/createUser"
+            
+        case .getPosts:
+            return "/posts"
         }
     }
 

@@ -23,6 +23,8 @@
 		293B9C8023FB368000654A72 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293B9C7F23FB368000654A72 /* UIView+Extension.swift */; };
 		293B9C8223FB398F00654A72 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293B9C8123FB398F00654A72 /* LoadingView.swift */; };
 		293C684F23EDDA9C005CE93D /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293C684E23EDDA9C005CE93D /* Color+Extension.swift */; };
+		293D4A4123FEC5960066F03E /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293D4A4023FEC5960066F03E /* HomeViewModel.swift */; };
+		293D4A4323FEC6250066F03E /* HomeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293D4A4223FEC6250066F03E /* HomeRepository.swift */; };
 		2956CD6423F1DDDF009DA6DE /* WelcomeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2956CD6323F1DDDF009DA6DE /* WelcomeRepository.swift */; };
 		2956CD6723F1EF4C009DA6DE /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2956CD6623F1EF4C009DA6DE /* AppModel.swift */; };
 		2956CD6A23F1EFC2009DA6DE /* AppRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2956CD6923F1EFC2009DA6DE /* AppRepository.swift */; };
@@ -40,6 +42,7 @@
 		29BF9B1823F5CE1D00527DD5 /* BaseField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29BF9B1723F5CE1D00527DD5 /* BaseField.swift */; };
 		29D77BF623F1C53600B9B06F /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D77BF523F1C53600B9B06F /* LoginButton.swift */; };
 		29E0875523F1DC32005936F6 /* WelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E0875423F1DC32005936F6 /* WelcomeViewModel.swift */; };
+		29E3B15223FEF806006A0008 /* HomeViewCellEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E3B15123FEF806006A0008 /* HomeViewCellEmpty.swift */; };
 		29F7409E23F7301300DD52E1 /* CreateAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F7409D23F7301300DD52E1 /* CreateAccountViewModel.swift */; };
 		29F740A023F7305000DD52E1 /* CreateAccountRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F7409F23F7305000DD52E1 /* CreateAccountRepository.swift */; };
 /* End PBXBuildFile section */
@@ -65,6 +68,8 @@
 		293B9C7F23FB368000654A72 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		293B9C8123FB398F00654A72 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		293C684E23EDDA9C005CE93D /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
+		293D4A4023FEC5960066F03E /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		293D4A4223FEC6250066F03E /* HomeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRepository.swift; sourceTree = "<group>"; };
 		2956CD6323F1DDDF009DA6DE /* WelcomeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeRepository.swift; sourceTree = "<group>"; };
 		2956CD6623F1EF4C009DA6DE /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
 		2956CD6923F1EFC2009DA6DE /* AppRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRepository.swift; sourceTree = "<group>"; };
@@ -79,6 +84,7 @@
 		29BF9B1723F5CE1D00527DD5 /* BaseField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseField.swift; sourceTree = "<group>"; };
 		29D77BF523F1C53600B9B06F /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
 		29E0875423F1DC32005936F6 /* WelcomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewModel.swift; sourceTree = "<group>"; };
+		29E3B15123FEF806006A0008 /* HomeViewCellEmpty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewCellEmpty.swift; sourceTree = "<group>"; };
 		29F7409D23F7301300DD52E1 /* CreateAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewModel.swift; sourceTree = "<group>"; };
 		29F7409F23F7305000DD52E1 /* CreateAccountRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -225,6 +231,7 @@
 		29BF9B0F23F4808D00527DD5 /* repository */ = {
 			isa = PBXGroup;
 			children = (
+				293D4A4223FEC6250066F03E /* HomeRepository.swift */,
 			);
 			path = repository;
 			sourceTree = "<group>";
@@ -232,6 +239,7 @@
 		29BF9B1023F4809500527DD5 /* viewmodel */ = {
 			isa = PBXGroup;
 			children = (
+				293D4A4023FEC5960066F03E /* HomeViewModel.swift */,
 			);
 			path = viewmodel;
 			sourceTree = "<group>";
@@ -241,6 +249,7 @@
 			children = (
 				29BF9B1223F480B500527DD5 /* HomeView.swift */,
 				2957E59523FC70B300369740 /* HomeViewCell.swift */,
+				29E3B15123FEF806006A0008 /* HomeViewCellEmpty.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -431,12 +440,15 @@
 				2920A7BB23EDA0E0005E74D8 /* WelcomeView.swift in Sources */,
 				295E32B223F325740095F210 /* ApiRouter.swift in Sources */,
 				29BF9B0D23F4461800527DD5 /* CreateAccountView.swift in Sources */,
+				29E3B15223FEF806006A0008 /* HomeViewCellEmpty.swift in Sources */,
 				293B9C7923FAE67500654A72 /* Coordinator.swift in Sources */,
 				293B9C8023FB368000654A72 /* UIView+Extension.swift in Sources */,
+				293D4A4323FEC6250066F03E /* HomeRepository.swift in Sources */,
 				2901AD8A23FDB8B900AE080F /* UIColor+Extension.swift in Sources */,
 				2957E59423FC2A8F00369740 /* HostingController.swift in Sources */,
 				2920A7A823ED9D81005E74D8 /* AppDelegate.swift in Sources */,
 				2920A7AA23ED9D81005E74D8 /* SceneDelegate.swift in Sources */,
+				293D4A4123FEC5960066F03E /* HomeViewModel.swift in Sources */,
 				2956CD6A23F1EFC2009DA6DE /* AppRepository.swift in Sources */,
 				29BF9B1323F480B500527DD5 /* HomeView.swift in Sources */,
 				29F740A023F7305000DD52E1 /* CreateAccountRepository.swift in Sources */,

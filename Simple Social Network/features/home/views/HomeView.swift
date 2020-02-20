@@ -13,12 +13,28 @@ struct HomeView: View {
     
     var onFinish: (() -> Void)?
     
-    var posts = [Post]()
+    @ObservedObject var viewModel: HomeViewModel
+    
+    @State fileprivate var isShowLoading = false
         
-    init() {
+    init(viewModel: HomeViewModel) {
+        
+        self.viewModel = viewModel
+        
+        getPosts()
+        
         setListProperties()
-        
-        createFakeData()
+    }
+    
+    fileprivate func getPosts() {
+        isShowLoading = true
+        self.viewModel.getPosts().subscribe(onNext: { posts in
+            self.isShowLoading = false
+            self.viewModel.posts = posts
+        }, onError: { (error) in
+            print("getPosts on error \(error)")
+            self.isShowLoading = false
+        }).disposed(by: viewModel.bag)
     }
     
     fileprivate func setListProperties() {
@@ -29,65 +45,56 @@ struct HomeView: View {
         UITableView.appearance().backgroundColor = .grayBG
     }
     
-    fileprivate mutating func createFakeData() {
-        posts.append(
-            Post(createdAt: "ontem",
-                 updatedAt: "hoje",
-                 id: 1, title: "title 1",
-                 body: "body 1",
-                 postOwner: App.shared.user)
-        )
-        
-        posts.append(
-            Post(createdAt: "ontem",
-                 updatedAt: "hoje",
-                 id: 2, title: "title 2",
-                 body: "body 2",
-                 postOwner: App.shared.user)
-        )
-        
-        posts.append(
-            Post(createdAt: "ontem",
-                 updatedAt: "hoje",
-                 id: 3, title: "title 3",
-                 body: "body 3",
-                 postOwner: App.shared.user)
-        )
-    }
-    
     var body: some View {
         
-        NavigationView {
-            List(posts) { post in
-                HomeViewCell(post: post).background(Color.white).cornerRadius(10).shadow(radius: 10)
+        LoadingView(isShowing: $isShowLoading, content: {
+            NavigationView {
+                
+                self.showPosts()
+                
+                //navigation bar items
+                .navigationBarItems(leading:
+                    HStack {
+                        Button(action: {
+                            self.onFinish?()
+                        
+                        }, label: {
+                            Text("home.screen.logout")
+                                .font(Font.system(size: 18, weight: .medium, design: .rounded))
+                                .foregroundColor(.red)
+                        })
+                    }, trailing:
+                    HStack {
+                        Button(action: {}, label: {
+                            Text("home.screen.new_post")
+                                .font(Font.system(size: 18, weight: .medium, design: .rounded))
+                                .foregroundColor(.blue)
+                        })
+                    })
+                //navigation title bar
+                .navigationBarTitle(Text("\(App.shared.user?.name ?? "")'s ") + Text("home.screen.title"))
             }
-            //navigation bar items
-            .navigationBarItems(leading:
-                HStack {
-                    Button(action: {
-                        self.onFinish?()
-                    
-                    }, label: {
-                        Text("home.screen.logout")
-                            .font(Font.system(size: 18, weight: .medium, design: .rounded))
-                            .foregroundColor(.red)
-                    })
-                }, trailing:
-                HStack {
-                    Button(action: {}, label: {
-                        Text("home.screen.new_post")
-                            .font(Font.system(size: 18, weight: .medium, design: .rounded))
-                            .foregroundColor(.blue)
-                    })
-                })
-            //navigation title bar
-            .navigationBarTitle(Text("\(App.shared.user?.name ?? "")'s ") + Text("home.screen.title"))
+        })
+    }
+    
+    fileprivate func showPosts() -> some View {
+        
+        if viewModel.posts.isEmpty {
+            return AnyView(HomeViewCellEmpty())
+        
+        } else {
+            return AnyView(List(self.viewModel.posts) { post in
+                HomeViewCell(post: post)
+                    .background(Color.white)
+                    .cornerRadius(10)
+                    .shadow(radius: 5)
+            })
         }
     }
 }
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView().environment(\.locale, .init(identifier: "en"))//pt-BR
+        HomeView(viewModel: HomeViewModel()).environment(\.locale, .init(identifier: "en"))//pt-BR
     }
 }

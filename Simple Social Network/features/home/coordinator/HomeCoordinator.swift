@@ -23,7 +23,7 @@ class HomeCoordinator: ChildCoordinator {
             return
         }
         
-        var contentView = HomeView()
+        var contentView = HomeView(viewModel: HomeViewModel())
         contentView.onFinish = {
             delegate?.finish(coordinator: .home)
         }

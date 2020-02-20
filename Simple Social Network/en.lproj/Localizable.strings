@@ -35,3 +35,4 @@
 "home.screen.logout" = "Logout";
 "home.screen.new_post" = "New post";
 "home.screen.title" = "Feeds";
+"home.screen.empty" = "Nothing posted yet, be the first!";

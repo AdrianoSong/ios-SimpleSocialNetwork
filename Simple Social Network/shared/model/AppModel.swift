@@ -9,6 +9,7 @@
 import Foundation
 
 typealias User = [UserElement]
+typealias Posts = [Post]
 
 struct UserElement: Codable {
     let posts: [Post]?
@@ -19,9 +20,8 @@ struct UserElement: Codable {
 
 struct Post: Codable, Identifiable {
     let createdAt, updatedAt: String?
-    let id: Int?
+    let id, postOwner: Int?
     let title, body: String?
-    let postOwner: UserElement?
 }
 
 struct Token: Codable {
