@@ -36,3 +36,11 @@
 "home.screen.new_post" = "Postar";
 "home.screen.title" = "Feeds";
 "home.screen.empty" = "Nenhum poste, seja o primeiro!";
+
+"create.post.screen.title" = "Criar Postagem";
+"create.post.screen.cancel_button" =  "Cancelar";
+"create.post.screen.post_button" =  "Criar";
+"create.post.screen.post_section_title" = "Título da postagem";
+"create.post.screen.post_section_description" = "Descrição da postagem";
+"create.post.screen.post_title" = "Título";
+"create.post.screen.post_description" = "Descrição";

@@ -12,12 +12,19 @@ import SwiftUI
 struct HomeViewCellEmpty: View {
     
     var body: some View {
-        HStack {
+        VStack {
+            
             Spacer()
             
-            Text("home.screen.empty")
-                .font(Font.system(size: 30, weight: .medium, design: .rounded))
-                .foregroundColor(.black)
+            HStack {
+                Spacer()
+                
+                Text("home.screen.empty")
+                    .font(Font.system(size: 30, weight: .medium, design: .rounded))
+                    .foregroundColor(.black)
+                
+                Spacer()
+            }
             
             Spacer()
         }

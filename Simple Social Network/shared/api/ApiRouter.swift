@@ -18,6 +18,7 @@ enum ApiRouter: URLRequestConvertible {
     case getUser (email: String, password: String)
     case createUser (name: String, email: String, password: String)
     case getPosts
+    case createPost (title: String, postDescription: String, userId: Int?)
     
     // MARK: - Parameters
     //This is the queries part, it's optional because an endpoint can be without parameters
@@ -34,6 +35,9 @@ enum ApiRouter: URLRequestConvertible {
             
         case .getPosts:
             return nil
+            
+        case .createPost(let title, let postDescription, let userId):
+            return ["title": title, "postDescription": postDescription, "userId": userId as Any]
         }
     }
     
@@ -49,6 +53,8 @@ enum ApiRouter: URLRequestConvertible {
             return .post
         case .getPosts:
             return .get
+        case .createPost:
+            return .post
         }
     }
     
@@ -65,6 +71,9 @@ enum ApiRouter: URLRequestConvertible {
             
         case .getPosts:
             return "/posts"
+            
+        case .createPost:
+            return "/post"
         }
     }
 
@@ -91,7 +100,7 @@ enum ApiRouter: URLRequestConvertible {
     fileprivate func setRequestHeaders(_ urlRequest: inout URLRequest) {
         
         switch self {
-        case .getUser, .createUser:
+        case .getUser, .createUser, .createPost:
             urlRequest.setValue(ContentType.xWwwFormUrlEncoded.rawValue,
                                 forHTTPHeaderField: HttpHeaderField.contentType.rawValue)
             urlRequest.setValue(App.shared.token?.csrf ?? "",

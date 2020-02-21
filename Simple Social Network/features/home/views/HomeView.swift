@@ -16,6 +16,7 @@ struct HomeView: View {
     @ObservedObject var viewModel: HomeViewModel
     
     @State fileprivate var isShowLoading = false
+    @State fileprivate var isShowPostScreen = false
         
     init(viewModel: HomeViewModel) {
         
@@ -30,7 +31,7 @@ struct HomeView: View {
         isShowLoading = true
         self.viewModel.getPosts().subscribe(onNext: { posts in
             self.isShowLoading = false
-            self.viewModel.posts = posts
+            self.viewModel.posts = posts.reversed()
         }, onError: { (error) in
             print("getPosts on error \(error)")
             self.isShowLoading = false
@@ -55,20 +56,11 @@ struct HomeView: View {
                 //navigation bar items
                 .navigationBarItems(leading:
                     HStack {
-                        Button(action: {
-                            self.onFinish?()
-                        
-                        }, label: {
-                            Text("home.screen.logout")
-                                .font(Font.system(size: 18, weight: .medium, design: .rounded))
-                                .foregroundColor(.red)
-                        })
+                        self.createLogoutButton()
                     }, trailing:
                     HStack {
-                        Button(action: {}, label: {
-                            Text("home.screen.new_post")
-                                .font(Font.system(size: 18, weight: .medium, design: .rounded))
-                                .foregroundColor(.blue)
+                        self.createPostButton().sheet(isPresented: self.$isShowPostScreen, content: {
+                            self.callCreatePostView()
                         })
                     })
                 //navigation title bar
@@ -77,10 +69,20 @@ struct HomeView: View {
         })
     }
     
+    fileprivate func callCreatePostView() -> CreatePostView {
+        
+        var createPostView = CreatePostView(isPresented: self.$isShowPostScreen, viewModel: self.viewModel)
+        createPostView.postCreated = { post in
+            self.viewModel.posts.insert(post, at: 0)
+        }
+        
+        return createPostView
+    }
+    
     fileprivate func showPosts() -> some View {
         
         if viewModel.posts.isEmpty {
-            return AnyView(HomeViewCellEmpty())
+            return AnyView(HomeViewCellEmpty().background(Color.grayBG))
         
         } else {
             return AnyView(List(self.viewModel.posts) { post in
@@ -90,6 +92,27 @@ struct HomeView: View {
                     .shadow(radius: 5)
             })
         }
+    }
+    
+    fileprivate func createLogoutButton() -> some View {
+        return Button(action: {
+            self.onFinish?()
+            
+        }, label: {
+            Text("home.screen.logout")
+                .font(Font.system(size: 18, weight: .medium, design: .rounded))
+                .foregroundColor(.red)
+        })
+    }
+    
+    fileprivate func createPostButton() -> some View {
+        return Button(action: {
+            self.isShowPostScreen.toggle()
+        }, label: {
+            Text("home.screen.new_post")
+                .font(Font.system(size: 18, weight: .medium, design: .rounded))
+                .foregroundColor(.blue)
+        })
     }
 }
 

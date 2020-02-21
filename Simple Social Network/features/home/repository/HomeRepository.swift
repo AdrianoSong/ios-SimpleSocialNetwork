@@ -14,4 +14,9 @@ class HomeRepository: AppRepository {
     func getPosts() -> Observable<Posts> {
         return BaseApi.request(urlConvertile: ApiRouter.getPosts)
     }
+    
+    func createPost(title: String, postDescription: String, userId: Int?) -> Observable<Post> {
+        return BaseApi.request(urlConvertile: ApiRouter.createPost(
+            title: title, postDescription: postDescription, userId: userId))
+    }
 }

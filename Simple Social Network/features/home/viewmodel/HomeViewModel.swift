@@ -24,4 +24,8 @@ class HomeViewModel: ObservableObject {
     func getPosts() -> Observable<Posts> {
         return repository.getPosts()
     }
+    
+    func createPost(title: String, postDescription: String, userId: Int?) -> Observable<Post> {
+        return repository.createPost(title: title, postDescription: postDescription, userId: userId)
+    }
 }

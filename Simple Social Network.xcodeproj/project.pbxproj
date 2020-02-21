@@ -43,6 +43,7 @@
 		29D77BF623F1C53600B9B06F /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D77BF523F1C53600B9B06F /* LoginButton.swift */; };
 		29E0875523F1DC32005936F6 /* WelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E0875423F1DC32005936F6 /* WelcomeViewModel.swift */; };
 		29E3B15223FEF806006A0008 /* HomeViewCellEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E3B15123FEF806006A0008 /* HomeViewCellEmpty.swift */; };
+		29E3B15423FF0D19006A0008 /* CreatePostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E3B15323FF0D19006A0008 /* CreatePostView.swift */; };
 		29F7409E23F7301300DD52E1 /* CreateAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F7409D23F7301300DD52E1 /* CreateAccountViewModel.swift */; };
 		29F740A023F7305000DD52E1 /* CreateAccountRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F7409F23F7305000DD52E1 /* CreateAccountRepository.swift */; };
 /* End PBXBuildFile section */
@@ -85,6 +86,7 @@
 		29D77BF523F1C53600B9B06F /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
 		29E0875423F1DC32005936F6 /* WelcomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewModel.swift; sourceTree = "<group>"; };
 		29E3B15123FEF806006A0008 /* HomeViewCellEmpty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewCellEmpty.swift; sourceTree = "<group>"; };
+		29E3B15323FF0D19006A0008 /* CreatePostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostView.swift; sourceTree = "<group>"; };
 		29F7409D23F7301300DD52E1 /* CreateAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewModel.swift; sourceTree = "<group>"; };
 		29F7409F23F7305000DD52E1 /* CreateAccountRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -250,6 +252,7 @@
 				29BF9B1223F480B500527DD5 /* HomeView.swift */,
 				2957E59523FC70B300369740 /* HomeViewCell.swift */,
 				29E3B15123FEF806006A0008 /* HomeViewCellEmpty.swift */,
+				29E3B15323FF0D19006A0008 /* CreatePostView.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -441,6 +444,7 @@
 				295E32B223F325740095F210 /* ApiRouter.swift in Sources */,
 				29BF9B0D23F4461800527DD5 /* CreateAccountView.swift in Sources */,
 				29E3B15223FEF806006A0008 /* HomeViewCellEmpty.swift in Sources */,
+				29E3B15423FF0D19006A0008 /* CreatePostView.swift in Sources */,
 				293B9C7923FAE67500654A72 /* Coordinator.swift in Sources */,
 				293B9C8023FB368000654A72 /* UIView+Extension.swift in Sources */,
 				293D4A4323FEC6250066F03E /* HomeRepository.swift in Sources */,
