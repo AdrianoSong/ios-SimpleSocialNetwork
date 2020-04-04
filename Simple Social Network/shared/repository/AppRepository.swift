@@ -17,6 +17,6 @@ protocol AppRepository {
 extension AppRepository {
     
     func getToken() -> Observable<Token> {
-        return BaseApi.request(urlConvertile: ApiRouter.getToken)
+        return BaseApi.request(urlConvertile: ApiRouterV2.getToken)
     }
 }

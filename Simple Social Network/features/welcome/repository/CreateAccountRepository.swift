@@ -13,6 +13,6 @@ class CreateAccountRepository: AppRepository {
     
     func createUser(name: String, email: String, password: String) -> Observable<UserElement> {
         return BaseApi.request(
-            urlConvertile: ApiRouter.createUser(name: name, email: email, password: password))
+            urlConvertile: ApiRouterV2.createUser(name: name, email: email, password: password))
     }
 }

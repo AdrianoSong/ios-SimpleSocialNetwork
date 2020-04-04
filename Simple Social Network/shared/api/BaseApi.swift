@@ -36,31 +36,31 @@ enum ContentType: String {
 class BaseApi {
     
     static func request<T: Codable>(urlConvertile: URLRequestConvertible) -> Observable<T> {
-        
+
         return Observable<T>.create { emitter in
-            let request = Alamofire.request(urlConvertile).responseData(completionHandler: { data in
-                
+            let request = AF.request(urlConvertile).responseData(completionHandler: { data in
+
                 switch data.response?.statusCode {
                 case 200:
                     switch data.result {
                     case .success(let dataValue):
-                       
+
                         printSuccessData(data: dataValue)
-                        
+
                         do {
                             let decoder = JSONDecoder()
                             let parsedDataToModel = try decoder.decode(T.self, from: dataValue)
-                            
+
                             emitter.onNext(parsedDataToModel)
                             emitter.onCompleted()
-                            
+
                         } catch let error {
                             emitter.onError(error)
                         }
                     case .failure(let error):
                         emitter.onError(error)
                     }
-                    
+
                 case 400:
                     emitter.onError(AlamoError.badRequest(
                         description: data.response?.allHeaderFields[AnyHashable("X-Exit")] as? String ?? ""))
