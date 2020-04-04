@@ -17,6 +17,21 @@ protocol ApiRouterProtocol: URLRequestConvertible {
     func asURLRequest() throws -> URLRequest
 }
 
+//The header fields
+enum HttpHeaderField: String {
+    case authentication = "Authorization"
+    case contentType = "Content-Type"
+    case acceptType = "Accept"
+    case acceptEncoding = "Accept-Encoding"
+    case csrfTokem = "X-CSRF-Token"
+}
+
+//The content type (JSON)
+enum ContentType: String {
+    case json = "application/json"
+    case xWwwFormUrlEncoded = "application/x-www-form-urlencoded"
+}
+
 ///You can Create specific ApiRouter (ex: User) each one needs to conform ApiRouterProtocol
 enum ApiRouterV2: ApiRouterProtocol {
 
