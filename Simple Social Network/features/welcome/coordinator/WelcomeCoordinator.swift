@@ -23,10 +23,7 @@ class WelcomeCoordinator: ChildCoordinator {
             return
         }
         
-        var contentView = WelcomeView(viewModel: WelcomViewModel())
-        contentView.onFinish = {
-            delegate?.finish(coordinator: .welcome)
-        }
+        let contentView = WelcomeView(viewModel: WelcomViewModel())
 
         UIView.windowFlipTranstion(
             window: window,

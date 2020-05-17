@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftUI
+import RxSwift
 
 protocol AppCoordinatorDelegate: class {
     func finish(coordinator: CoordinatorKey)
@@ -16,25 +17,52 @@ protocol AppCoordinatorDelegate: class {
 class AppCoordinator: Coordinator, AppCoordinatorDelegate {
     
     let window: UIWindow?
+    fileprivate let bag = DisposeBag()
         
     init(window: UIWindow?) {
         
         self.window = window
         
+        bindUserSession()
+    }
+
+    fileprivate func bindUserSession() {
         //init the app singleton
-        _ = App.shared
+        let app = App.shared
+
+        //OBS: here needs to be a strong reference to AppCoordinator
+        app.userSession.asObservable().subscribe { event in
+
+            switch event.element {
+            case .loggedIn:
+                self.startHome()
+            case .loggedOut:
+                self.startWelcome()
+            case .none:
+                break
+            }
+        }.disposed(by: bag)
     }
     
+    fileprivate func startWelcome() {
+        let welcomeCoordinator = WelcomeCoordinator(window: self.window)
+        welcomeCoordinator.start(delegate: self)
+    }
+
+    fileprivate func startHome() {
+        let homeCoordinator = HomeCoordinator(window: self.window)
+        homeCoordinator.start(delegate: self)
+    }
+
+    @available(*, deprecated,
+    message: "now using Rx bindUserSession() method from AppCoordinator")
     func start(with: CoordinatorKey) {
         
         switch with {
         case .welcome:
-            let welcomeCoordinator = WelcomeCoordinator(window: self.window)
-            welcomeCoordinator.start(delegate: self)
-            
+            startWelcome()
         case .home:
-            let homeCoordinator = HomeCoordinator(window: self.window)
-            homeCoordinator.start(delegate: self)
+            startHome()
         }
     }
     
@@ -42,9 +70,9 @@ class AppCoordinator: Coordinator, AppCoordinatorDelegate {
         
         switch coordinator {
         case .welcome:
-            start(with: .home)
+            App.shared.userSession.accept(.loggedIn)
         case .home:
-            start(with: .welcome)
+            App.shared.userSession.accept(.loggedOut)
         }
     }
 }

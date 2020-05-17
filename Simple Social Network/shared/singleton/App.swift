@@ -7,7 +7,13 @@
 //
 
 import Foundation
-import RxSwift  
+import RxSwift
+import RxRelay
+
+enum UserSession {
+    case loggedIn
+    case loggedOut
+}
 
 class App: AppRepository {
     
@@ -18,6 +24,8 @@ class App: AppRepository {
     var token: Token?
     
     var user: UserElement?
+
+    var userSession = BehaviorRelay<UserSession>(value: .loggedOut)
     
     fileprivate init() {
         getToken()

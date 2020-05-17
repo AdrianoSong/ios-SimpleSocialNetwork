@@ -10,9 +10,7 @@ import Foundation
 import SwiftUI
 
 struct HomeView: View {
-    
-    var onFinish: (() -> Void)?
-    
+
     @ObservedObject var viewModel: HomeViewModel
     
     @State fileprivate var isShowLoading = false
@@ -96,7 +94,7 @@ struct HomeView: View {
     
     fileprivate func createLogoutButton() -> some View {
         return Button(action: {
-            self.onFinish?()
+            App.shared.userSession.accept(.loggedOut)
             
         }, label: {
             Text("home.screen.logout")

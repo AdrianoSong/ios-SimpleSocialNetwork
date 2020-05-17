@@ -19,8 +19,6 @@ struct WelcomeView: View {
     @State fileprivate var isOnLoading = false
     
     fileprivate let viewModel: WelcomViewModel
-        
-    var onFinish: (() -> Void)?
     
     init(viewModel: WelcomViewModel) {
         self.viewModel = viewModel
@@ -108,8 +106,7 @@ struct WelcomeView: View {
                             self.isOnLoading = false
                             
                             App.shared.user = user
-                            
-                            self.onFinish?()
+                            App.shared.userSession.accept(.loggedIn)
 
                         }, onError: { error in
                             print("error to fecth user: \(error)")

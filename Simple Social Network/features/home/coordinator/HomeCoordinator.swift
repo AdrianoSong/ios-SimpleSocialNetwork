@@ -23,10 +23,7 @@ class HomeCoordinator: ChildCoordinator {
             return
         }
         
-        var contentView = HomeView(viewModel: HomeViewModel())
-        contentView.onFinish = {
-            delegate?.finish(coordinator: .home)
-        }
+        let contentView = HomeView(viewModel: HomeViewModel())
         
         UIView.windowFlipTranstion(
             window: window, viewController: HomeHostingController(rootView: contentView))
